@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -Wextra BoundedQueues.c Test.c -o obj/test
+	gcc -Wall -Wextra BoundedQueues.h Test.c -o obj/test
