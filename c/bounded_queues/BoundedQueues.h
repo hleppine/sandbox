@@ -7,9 +7,9 @@
 #include <stdint.h>
 
 typedef struct {
-    uint32_t maxNbItems;
-    uint32_t itemNbOctets;
-    uint32_t nbItems;
+    size_t maxNbItems;
+    size_t itemNbOctets;
+    size_t nbItems;
     uint8_t* startPtr;
     uint8_t* endPtr;
     uint8_t* frontPtr;
@@ -18,9 +18,9 @@ typedef struct {
 
 void BoundedQueues_initialize(BoundedQueues_Queue_T* queue,
                               uint8_t* buffer,
-                              uint32_t bufferNbOctets,
-                              uint32_t maxNbItems,
-                              uint32_t itemNbOctets);
+                              size_t bufferNbOctets,
+                              size_t maxNbItems,
+                              size_t itemNbOctets);
 
 bool BoundedQueues_put(BoundedQueues_Queue_T* queue, const void* item);
 
@@ -30,19 +30,20 @@ bool BoundedQueues_get(BoundedQueues_Queue_T* queue, void* item);
 
 bool BoundedQueues_getFromBack(BoundedQueues_Queue_T* queue, void* item);
 
-inline uint32_t BoundedQueues_nbItems(const BoundedQueues_Queue_T* queue) {
+static inline uint32_t BoundedQueues_nbItems(
+    const BoundedQueues_Queue_T* queue) {
     assert(queue != NULL);
     return queue->nbItems;
 }
 
-inline bool BoundedQueues_isFull(const BoundedQueues_Queue_T* queue) {
+static inline bool BoundedQueues_isFull(const BoundedQueues_Queue_T* queue) {
     assert(queue != NULL);
     return queue->nbItems == queue->maxNbItems;
 }
 
-inline bool BoundedQueues_isEmpty(const BoundedQueues_Queue_T* queue) {
+static inline bool BoundedQueues_isEmpty(const BoundedQueues_Queue_T* queue) {
     assert(queue != NULL);
-    return queue->nbItems == 0;
+    return queue->nbItems == 0UL;
 }
 
 #endif /* BoundedQueues_H */
