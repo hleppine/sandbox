@@ -3,17 +3,14 @@
 #include <stddef.h>
 
 /*
- * Usage: define the macros GENERIC_STACKS__ITEM_T and GENERIC_STACKS__TAG
+ * Usage: define the macros (see examples below):
+ *  - GENERIC_STACKS__ITEM_T
+ *  - GENERIC_STACKS__TAG
  * and include this file.
- *
- * E.g. with GENERIC_STACKS__ITEM_T=int and GENERIC_STACKS__TAG=Int
- * you get a stack type StacksInt_Stack_T for ints.
  *
  * The MISRA C:2012 advisory rules 20.5 and 20.10 are violated
  * as annotated below with cppcheck suppressions.
  */
-
-// Define helper macros:
 
 #ifndef GENERIC_STACKS__ITEM_T
 #define GENERIC_STACKS__ITEM_T int
@@ -22,6 +19,8 @@
 #ifndef GENERIC_STACKS__TAG
 #define GENERIC_STACKS__TAG Int
 #endif
+
+// Define helper macros:
 
 #define GENERIC_STACKS__JOIN(A, B) A##B  // cppcheck-suppress misra-c2012-20.10
 #define GENERIC_STACKS__IDENT(ROOT, NAME) GENERIC_STACKS__JOIN(ROOT, NAME)
@@ -96,19 +95,13 @@ static inline bool GENERIC_STACKS__PEEK(const GENERIC_STACKS__STACK_T* stack,
     return success;
 }
 
-/*
- * Undefine GENERIC_STACKS__ITEM_T, GENERIC_STACKS__TAG,
- * and all macros defined in this file:
- */
+// Undefine all macros defined in this file:
 
-#undef GENERIC_STACKS__ITEM_T  // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__TAG     // cppcheck-suppress misra-c2012-20.5
-
-#undef GENERIC_STACKS__JOIN   // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__IDENT  // cppcheck-suppress misra-c2012-20.5
-
-#undef GENERIC_STACKS__ROOT  // cppcheck-suppress misra-c2012-20.5
-
+#undef GENERIC_STACKS__ITEM_T      // cppcheck-suppress misra-c2012-20.5
+#undef GENERIC_STACKS__TAG         // cppcheck-suppress misra-c2012-20.5
+#undef GENERIC_STACKS__JOIN        // cppcheck-suppress misra-c2012-20.5
+#undef GENERIC_STACKS__IDENT       // cppcheck-suppress misra-c2012-20.5
+#undef GENERIC_STACKS__ROOT        // cppcheck-suppress misra-c2012-20.5
 #undef GENERIC_STACKS__STACK_T     // cppcheck-suppress misra-c2012-20.5
 #undef GENERIC_STACKS__INITIALIZE  // cppcheck-suppress misra-c2012-20.5
 #undef GENERIC_STACKS__NB_ITEMS    // cppcheck-suppress misra-c2012-20.5
