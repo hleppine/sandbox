@@ -8,9 +8,7 @@ WORK_DIR="$(realpath --relative-to "$BASE_DIR" "$CURRENT_DIR")"
 
 mkdir -p "$BASE_DIR/docker/home"
 
-# TODO Select which docker image to run.
-
-# TODO graphical apps e.g. chromium browser
+# TODO fix workdir below
 
 docker run \
     --rm \
@@ -19,8 +17,12 @@ docker run \
     --tty \
     --interactive \
     --user "$(id -u):$(id -g)" \
-    --volume "${CURRENT_DIR}/home:/home/dockeruser" \
+    --volume "${CURRENT_DIR}/home:/home/user" \
     --volume "$BASE_DIR:/src" \
     --workdir "/src/$(realpath --relative-to "${BASE_DIR}" "$(realpath .)")" \
-    dockerproject \
+    --ipc host \
+    --env DISPLAY \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+    --volume ~/.Xauthority:/home/user/.Xauthority \
+    dockerproject-image \
     "$@"
