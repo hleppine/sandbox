@@ -7,10 +7,7 @@ RUN apt-get -y install \
     bash \
     build-essential \
     curl \
-    gedit \
     nano
-
-# TODO below fixuid version as some variable
 
 RUN groupadd -g 1000 user && \
     useradd -g user -u 1000 --no-create-home user && \
@@ -21,6 +18,15 @@ RUN groupadd -g 1000 user && \
     chmod 4755 /usr/local/bin/fixuid && \
     mkdir -p /etc/fixuid && \
     printf 'user: user\ngroup: user\npaths: []\n' > /etc/fixuid/config.yml
+
+# TODO building cppcheck is very slow...
+# ARG CPPCHECK_VERSION
+RUN --mount=type=bind,source=deps/cppcheck-2.10.tar.gz,target=/tmp/cppcheck-2.10.tar.gz \
+    mkdir -p /opt/cppcheck && \
+    cd /opt/cppcheck && \
+    tar xf /tmp/cppcheck-2.10.tar.gz --strip-components 1 --no-same-owner && \
+    make
+ENV PATH=/opt/cppcheck:${PATH}
 
 USER user:user
 ENTRYPOINT ["fixuid", "-q"]
