@@ -19,13 +19,12 @@ RUN groupadd -g 1000 user && \
     mkdir -p /etc/fixuid && \
     printf 'user: user\ngroup: user\npaths: []\n' > /etc/fixuid/config.yml
 
-# TODO building cppcheck is very slow...
 # ARG CPPCHECK_VERSION
-# RUN --mount=type=bind,source=deps/cppcheck-2.10.tar.gz,target=/tmp/cppcheck-2.10.tar.gz \
-#    mkdir -p /opt/cppcheck && \
-#    cd /opt/cppcheck && \
-#    tar xf /tmp/cppcheck-2.10.tar.gz --strip-components 1 --no-same-owner && \
-#    make
+RUN --mount=type=bind,source=deps/cppcheck-2.10.tar.gz,target=/tmp/cppcheck-2.10.tar.gz \
+   mkdir -p /opt/cppcheck && \
+   cd /opt/cppcheck && \
+   tar xf /tmp/cppcheck-2.10.tar.gz --strip-components 1 --no-same-owner && \
+   make
 #ENV PATH=/opt/cppcheck:${PATH}
 
 USER user:user
