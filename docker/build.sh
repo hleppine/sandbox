@@ -8,6 +8,8 @@ DEPS_DIR="${SCRIPT_DIR}/deps"
 
 CPPCHECK_VERSION="2.10"
 
+cd "${SCRIPT_DIR"
+
 mkdir -p "${DEPS_DIR}"
 
 # Download dependencies if not present.
