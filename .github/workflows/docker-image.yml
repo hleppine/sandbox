@@ -43,6 +43,8 @@ jobs:
     - name: Load Docker image
       run: docker import /tmp/dockerproject.tar
 
+      run: docker image ls
+
     - uses: actions/checkout@v3
     - name: Make C code
       run: ./docker/run.sh make -C ./c
