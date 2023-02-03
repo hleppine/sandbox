@@ -8,8 +8,6 @@ DEPS_DIR="${SCRIPT_DIR}/deps"
 
 CPPCHECK_VERSION="2.10"
 
-cd "${SCRIPT_DIR}"
-
 mkdir -p "${DEPS_DIR}"
 
 # Download dependencies if not present.
@@ -18,4 +16,4 @@ pushd "${DEPS_DIR}"
 popd
 
 # Build the docker image.
-DOCKER_BUILDKIT=1 docker build --tag dockerproject-image .
+DOCKER_BUILDKIT=1 docker build --tag dockerproject-image "${SCRIPT_DIR}"
