@@ -19,7 +19,7 @@ docker run \
     --rm \
     --init \
     --net host \
-    "${TTY}" \
+#    "${TTY}" \
     --interactive \
     --user "$(id -u):$(id -g)" \
     --volume "${CURRENT_DIR}/home:/home/user" \
