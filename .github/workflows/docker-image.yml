@@ -41,7 +41,7 @@ jobs:
       run: md5sum /tmp/dockerproject.tar
 
     - name: Load Docker image
-      run: docker import /tmp/dockerproject.tar
+      run: docker import /tmp/dockerproject.tar dockerproject-image:latest
 
     - name: Docker ls
       run: docker image ls
