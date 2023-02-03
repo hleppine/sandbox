@@ -31,6 +31,9 @@ jobs:
     - name: Download artifacts (Docker images) from previous workflows
       uses: actions/download-artifact@v2
 
+    - name: Load Docker image
+      run: docker load --input /tmp/dockerproject.tar
+
     - uses: actions/checkout@v3
     - name: Make C code
       run: ./docker/run.sh make -C ./c
