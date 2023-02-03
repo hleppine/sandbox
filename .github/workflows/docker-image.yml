@@ -23,6 +23,9 @@ jobs:
           name: dockerproject
           path: /tmp/dockerproject.tar
 
+    - name: Check
+      run: md5sum /tmp/dockerproject.tar
+
   make:
     needs: build-docker
     runs-on: ubuntu-latest
@@ -33,6 +36,9 @@ jobs:
       with:
         name: dockerproject
         path: /tmp
+
+    - name: Check
+      run: md5sum /tmp/dockerproject.tar
 
     - name: Load Docker image
       run: docker load --input /tmp/dockerproject.tar
