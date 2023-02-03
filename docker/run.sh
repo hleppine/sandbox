@@ -10,11 +10,16 @@ mkdir -p "$BASE_DIR/docker/home"
 
 # TODO fix workdir below
 
+TTY=""
+if [ -t 0 ]; then
+    TTY="--tty"
+fi
+
 docker run \
     --rm \
     --init \
     --net host \
-    --tty \
+    "${TTY}" \
     --interactive \
     --user "$(id -u):$(id -g)" \
     --volume "${CURRENT_DIR}/home:/home/user" \
