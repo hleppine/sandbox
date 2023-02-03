@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  build-docker:
 
     runs-on: ubuntu-latest
 
@@ -16,3 +16,11 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: ./docker/build.sh
+
+  make:
+    needs: build-docker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Make
+      run: ./docker/run.sh make -C ./c
