@@ -32,7 +32,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: dockerproject
-        path: /tmp/dockerproject.tar
+        path: /tmp
 
     - name: Load Docker image
       run: docker load --input /tmp/dockerproject.tar
