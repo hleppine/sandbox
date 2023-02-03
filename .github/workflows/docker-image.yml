@@ -17,11 +17,20 @@ jobs:
     - name: Build the Docker image
       run: ./docker/build.sh
 
+    - name: Upload image as artifact
+      uses: actions/upload-artifact@v2
+      with:
+          name: dockerproject
+          path: /tmp/dockerproject.tar
+
   make:
     needs: build-docker
     runs-on: ubuntu-latest
 
     steps:
+    - name: Download artifacts (Docker images) from previous workflows
+      uses: actions/download-artifact@v2
+
     - uses: actions/checkout@v3
     - name: Make C code
       run: ./docker/run.sh make -C ./c
