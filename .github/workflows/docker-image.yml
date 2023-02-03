@@ -30,6 +30,9 @@ jobs:
     steps:
     - name: Download artifacts (Docker images) from previous workflows
       uses: actions/download-artifact@v2
+      with:
+        name: dockerproject.tar
+        path: /tmp
 
     - name: Load Docker image
       run: docker load --input /tmp/dockerproject.tar
