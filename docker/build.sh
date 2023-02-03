@@ -16,4 +16,4 @@ pushd "${DEPS_DIR}"
 popd
 
 # Build the docker image.
-DOCKER_BUILDKIT=1 docker build --tag dockerproject-image "${SCRIPT_DIR}" --output type=tar,dest=dockerproject.tar
+DOCKER_BUILDKIT=1 docker build --tag dockerproject-image "${SCRIPT_DIR}" --output type=tar,dest=/tmp/dockerproject.tar
