@@ -43,6 +43,7 @@ jobs:
     - name: Load Docker image
       run: docker import /tmp/dockerproject.tar
 
+    - name: Docker ls
       run: docker image ls
 
     - uses: actions/checkout@v3
