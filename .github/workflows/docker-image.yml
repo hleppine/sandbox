@@ -40,6 +40,9 @@ jobs:
     - name: Check
       run: md5sum /tmp/dockerproject.tar
 
+    - name: Create tmp
+      run: mkdir -p /var/lib/docker/tmp
+
     - name: Load Docker image
       run: docker load --input /tmp/dockerproject.tar
 
