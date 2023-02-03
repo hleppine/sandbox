@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -euxo pipefail
 
 CURRENT_DIR="$(realpath .)"
 BASE_DIR="$(realpath "$(dirname "$0")/..")"
@@ -19,7 +19,6 @@ docker run \
     --rm \
     --init \
     --net host \
-#    "${TTY}" \
     --interactive \
     --user "$(id -u):$(id -g)" \
     --volume "${CURRENT_DIR}/home:/home/user" \
