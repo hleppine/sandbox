@@ -48,12 +48,12 @@ void test_small_data(void)
     }
     printf("\n");
 
-    printf("Done");
+    printf("Done\n");
 }
 
 void test_large_data(void)
 {
-    printf("Test large data vs. qsort");
+    printf("Test large data vs. qsort\n");
     
     uint32_t testData[100000];
     uint32_t testData2[100000];
