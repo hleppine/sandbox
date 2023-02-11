@@ -50,3 +50,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Make C code
       run: ./docker/run.sh make -C ./c
+
+    - name: Test heaps
+      run: ./c/GenericHeaps/obj/test
