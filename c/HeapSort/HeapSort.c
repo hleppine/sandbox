@@ -1,3 +1,5 @@
+#include "HeapSort.h"
+
 void HeapSort_sort(
     void* data,
     size_t nbItems,
