@@ -1,6 +1,8 @@
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include "HeapSort.h"
 
@@ -30,6 +32,7 @@ int main()
     uint32_t testData2[100000];
     clock_t start;
     clock_t end;
+    uint32_t tmp
     
     const size_t testDataLen = NB_ITEMS(testData);
     
@@ -41,7 +44,7 @@ int main()
     
     checkSorted(testData, testDataLen);
     start = clock();
-    HeapSort_sort(testData, testDataLen, sizeof(uint32_t), cmpfunc);
+    HeapSort_sort(testData, testDataLen, sizeof(uint32_t), cmpfunc, &tmp);
     end = clock();
     checkSorted(testData, testDataLen);
     printf("Heap sort: %f\n", ((double)(end - start)) / CLOCKS_PER_SEC );
