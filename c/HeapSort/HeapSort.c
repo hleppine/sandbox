@@ -16,7 +16,7 @@ void HeapSort_sort(
         while(node > 0){
             size_t parent = (node - 1)/2;
             size_t pIdx = parent * itemSize;
-            if(cmp(&tmp, &dataPtr[pIdx]) < 0){
+            if(cmp(tmp, &dataPtr[pIdx]) < 0){
                 break;
             }
             memcpy(&dataPtr[nIdx], &dataPtr[pIdx], itemSize);
