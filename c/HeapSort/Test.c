@@ -25,8 +25,35 @@ int cmpfunc (const void * a, const void * b) {
    return left < right ? -1 : (left > right ? 1 : 0);
 }
 
-int main()
+void test_small_data(void)
 {
+    uint32_t testData[] = {
+        1, 20, 3, 18, 5,
+        16, 7, 14, 9, 12,
+        11, 10, 13, 8, 15,
+        6, 17, 4, 19, 2
+    };
+    uint32_t tmp;
+
+    const size_t testDataLen = NB_ITEMS(testData);
+
+    printf("Test small data\n");
+    for(size_t i = 0; i < testDataLen; i++){
+        printf("%d ", testData[i]);
+    }
+    printf("\n");
+    HeapSort_sort(testData, testDataLen, sizeof(uint32_t), cmpfunc, &tmp);
+    for(size_t i = 0; i < testDataLen; i++){
+        printf("%d ", testData[i]);
+    }
+    printf("\n");
+
+    printf("Done");
+}
+
+void test_large_data(void)
+{
+    printf("Test large data vs. qsort");
     
     uint32_t testData[100000];
     uint32_t testData2[100000];
@@ -57,6 +84,10 @@ int main()
     printf("Quicksort: %f\n", ((double)(end - start)) / CLOCKS_PER_SEC );
 
     printf("Done");
-   
+}
+
+int main(void){
+    test_small_data();
+    test_large_data();
     return 0;
 }
