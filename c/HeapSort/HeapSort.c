@@ -1,3 +1,4 @@
+#include <string.h>
 #include "HeapSort.h"
 
 void HeapSort_sort(
