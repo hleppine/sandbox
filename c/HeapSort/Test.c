@@ -32,7 +32,7 @@ int main()
     uint32_t testData2[100000];
     clock_t start;
     clock_t end;
-    uint32_t tmp
+    uint32_t tmp;
     
     const size_t testDataLen = NB_ITEMS(testData);
     
