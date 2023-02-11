@@ -53,3 +53,6 @@ jobs:
 
     - name: Test heaps
       run: ./c/GenericHeaps/obj/test
+
+    - name: Test heapsort
+      run: ./c/HeapSort/obj/test
