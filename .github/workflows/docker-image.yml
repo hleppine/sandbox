@@ -22,6 +22,7 @@ jobs:
       with:
           name: dockerproject
           path: /tmp/dockerproject.tar
+          retention-days: 7
 
     - name: Check
       run: md5sum /tmp/dockerproject.tar
