@@ -7,6 +7,7 @@ RUN apt-get -y install \
     bash \
     build-essential \
     clang \
+    clang-tools \
     cppcheck \
     curl \
     nano
