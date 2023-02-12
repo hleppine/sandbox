@@ -11,5 +11,5 @@ for path, dirc, files in os.walk(script_dir):
             src_path = os.path.join(path, name)
             dump_path = f'{src_path}.dump'
             misra_py = '/usr/lib/x86_64-linux-gnu/cppcheck/addons/misra.py'
-            subprocess.run(['cppcheck', '--dump', src_path])
+            subprocess.run(['cppcheck', '--dump', '--inline-suppr', src_path])
             subprocess.run(['python3', misra_py, dump_path])
