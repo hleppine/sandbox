@@ -51,6 +51,9 @@ jobs:
     - name: Make C code
       run: ./docker/run.sh make -C ./c
 
+    - name: Test array maps
+      run: ./c/ArrayMaps/obj/test
+
     - name: Test heaps
       run: ./c/GenericHeaps/obj/test
 
