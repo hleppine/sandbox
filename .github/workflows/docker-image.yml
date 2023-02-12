@@ -60,6 +60,9 @@ jobs:
     - name: Run cppcheck
       run: ./docker/run.sh cppcheck ./c
 
+    - name: MISRA python script
+      run: ./docker/run.sh python3 ./c/misra.py
+
     - name: Check MISRA
       run: |
         ./docker/run.sh cppcheck --dump ./c
