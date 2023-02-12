@@ -62,3 +62,6 @@ jobs:
 
     - name: Run cppcheck
       run: ./docker/run.sh cppcheck ./c
+
+    - name: Run clang scan-build
+      run: ./docker/run.sh scan-build make -C ./c
