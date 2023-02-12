@@ -48,12 +48,6 @@ jobs:
     - name: Make C code
       run: ./docker/run.sh make -C ./c
 
-    - name: which cppcheck
-      run: ./docker/run.sh which cppcheck
-
-    - name: Find misra.py
-      run: ./docker/run.sh find / -name misra.py
-
     - name: Test array maps
       run: ./c/ArrayMaps/obj/test
 
@@ -65,6 +59,11 @@ jobs:
 
     - name: Run cppcheck
       run: ./docker/run.sh cppcheck ./c
+
+    - name: Check MISRA
+      run: |
+        ./docker/run.sh cppcheck --dump ./c
+        ./docker/run.sh usr/lib/x86_64-linux-gnu/cppcheck/addons/misra.py ./c/ArrayItems/ArrayItems.c.dump
 
     - name: Run clang scan-build
       run: ./docker/run.sh scan-build make -C ./c
