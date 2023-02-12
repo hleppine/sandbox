@@ -61,4 +61,4 @@ jobs:
       run: ./c/HeapSort/obj/test
 
     - name: Run cppcheck
-      run: cppcheck ./c
+      run: ./docker/run.sh cppcheck ./c
