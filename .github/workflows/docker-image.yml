@@ -44,8 +44,11 @@ jobs:
     - name: Load Docker image
       run: docker import /tmp/dockerproject.tar dockerproject-image:latest
 
-    - name: Docker ls
-      run: docker image ls
+    - name: which cppcheck
+      run: ./docker/run.sh which cppcheck
+
+    - name: Find misra.py
+      run: ./docker/run.sh find /usr/bin -name "*.misra.py"
 
     - uses: actions/checkout@v3
     - name: Make C code
