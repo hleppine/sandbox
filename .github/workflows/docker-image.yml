@@ -44,15 +44,15 @@ jobs:
     - name: Load Docker image
       run: docker import /tmp/dockerproject.tar dockerproject-image:latest
 
+    - uses: actions/checkout@v3
+    - name: Make C code
+      run: ./docker/run.sh make -C ./c
+
     - name: which cppcheck
       run: ./docker/run.sh which cppcheck
 
     - name: Find misra.py
       run: ./docker/run.sh find /usr/bin -name "*.misra.py"
-
-    - uses: actions/checkout@v3
-    - name: Make C code
-      run: ./docker/run.sh make -C ./c
 
     - name: Test array maps
       run: ./c/ArrayMaps/obj/test
