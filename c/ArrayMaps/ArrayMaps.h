@@ -1,3 +1,6 @@
+#ifndef ARRAYMAPS_H
+#define ARRAYMAPS_H
+
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -36,3 +39,5 @@ bool ArrayMaps_find(
     uint32_t key,
     uint32_t* value
 );
+
+#endif /* ARRAYMAPS_H */
