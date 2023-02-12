@@ -52,7 +52,7 @@ jobs:
       run: ./docker/run.sh which cppcheck
 
     - name: Find misra.py
-      run: ./docker/run.sh find /usr/bin -name "*.misra.py"
+      run: ./docker/run.sh find / -name misra.py
 
     - name: Test array maps
       run: ./c/ArrayMaps/obj/test
