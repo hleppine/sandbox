@@ -60,13 +60,8 @@ jobs:
     - name: Run cppcheck
       run: ./docker/run.sh cppcheck ./c
 
-    - name: MISRA python script
-      run: ./docker/run.sh python3 ./c/misra.py
-
     - name: Check MISRA
-      run: |
-        ./docker/run.sh cppcheck --dump ./c
-        ./docker/run.sh python3 /usr/lib/x86_64-linux-gnu/cppcheck/addons/misra.py ./c/ArrayMaps/ArrayMaps.c.dump
+      run: ./docker/run.sh python3 ./c/misra.py
 
     - name: Run clang scan-build
       run: ./docker/run.sh scan-build make -C ./c
