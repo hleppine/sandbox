@@ -63,7 +63,7 @@ jobs:
     - name: Check MISRA
       run: |
         ./docker/run.sh cppcheck --dump ./c
-        ./docker/run.sh usr/lib/x86_64-linux-gnu/cppcheck/addons/misra.py ./c/ArrayItems/ArrayItems.c.dump
+        ./docker/run.sh /usr/lib/x86_64-linux-gnu/cppcheck/addons/misra.py ./c/ArrayItems/ArrayItems.c.dump
 
     - name: Run clang scan-build
       run: ./docker/run.sh scan-build make -C ./c
