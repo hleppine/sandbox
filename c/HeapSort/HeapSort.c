@@ -9,12 +9,12 @@ void HeapSort_sort(
     void* tmp
 ){
     size_t heapNbItems = 0;
-    unsigned char* dataPtr = data;
+    uint8_t* dataPtr = data;
     for(size_t i = 0; i < nbItems; i++){
         (void)memcpy(tmp, &dataPtr[i * itemSize], itemSize);
         size_t node = heapNbItems;
         size_t nIdx = node * itemSize;
-        while(node > 0){
+        while(node > 0UL){
             size_t parent = (node - 1UL)/2UL;
             size_t pIdx = parent * itemSize;
             if(cmp(tmp, &dataPtr[pIdx]) < 0){
@@ -27,7 +27,7 @@ void HeapSort_sort(
         (void)memcpy(&dataPtr[nIdx], tmp, itemSize);
         heapNbItems++;
     }
-    for(size_t i = nbItems; i > 0; i--){
+    for(size_t i = nbItems; i > 0UL; i--){
         size_t node = 0;
         heapNbItems--;
         (void)memcpy(tmp, &dataPtr[0], itemSize);
