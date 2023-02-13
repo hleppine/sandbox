@@ -10,7 +10,7 @@ void HeapSort_sort(
     void* tmp
 ){
     size_t heapNbItems = 0;
-    uint8_t* dataPtr = data;
+    uint8_t* dataPtr = (uint8_t*)data;
     for(size_t i = 0; i < nbItems; i++){
         (void)memcpy(tmp, &dataPtr[i * itemSize], itemSize);
         size_t node = heapNbItems;
@@ -33,12 +33,9 @@ void HeapSort_sort(
         heapNbItems--;
         (void)memcpy(tmp, &dataPtr[0], itemSize);
         void* nData = &dataPtr[itemSize * heapNbItems];
-        while(1){
+        while(((2UL * node) + 1UL) < heapNbItems){
             size_t lChild = (2UL * node) + 1UL;
             size_t lChPtr = lChild * itemSize;
-            if(lChild >= heapNbItems){
-                break;
-            }
             size_t highest = node; 
             void* hData = nData;
             if(cmp(&dataPtr[lChPtr], nData) > 0){
