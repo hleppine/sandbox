@@ -2,6 +2,15 @@
 #include <string.h>
 #include "HeapSort.h"
 
+static inline uint8_t* toBytePtr(void* ptr){
+    // void* -> uint8_t* while compliant with MISRA 11.5
+    uint8_t* ret;
+    uintptr_t* src = &ptr;
+    uintptr_t* dst = &ret;
+    *dst = *src;
+    return ret;
+}
+
 void HeapSort_sort(
     void* data,
     size_t nbItems,
@@ -10,12 +19,7 @@ void HeapSort_sort(
     void* tmp
 ){
     size_t heapNbItems = 0;
-    // uint8_t* dataPtr = data;
-    // TODO: Below circumvents MISRA 11.5
-    uint8_t* dataPtr;
-    uintptr_t* numPtr = &data;
-    uintptr_t* dataPtrPtr = &dataPtr;
-    *dataPtrPtr = *numPtr;
+    uint8_t* dataPtr = toBytePtr(data);
     for(size_t i = 0; i < nbItems; i++){
         (void)memcpy(tmp, &dataPtr[i * itemSize], itemSize);
         size_t node = heapNbItems;
