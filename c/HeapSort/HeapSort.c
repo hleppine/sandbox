@@ -33,7 +33,7 @@ void HeapSort_sort(
         (void)memcpy(tmp, &dataPtr[0], itemSize);
         void* nData = &dataPtr[itemSize * heapNbItems];
         while(1){
-            size_t lChild = 2UL * node + 1UL;
+            size_t lChild = (2UL * node) + 1UL;
             size_t lChPtr = lChild * itemSize;
             if(lChild >= heapNbItems){
                 break;
