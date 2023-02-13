@@ -13,7 +13,7 @@ static inline bool insert(GenericHeaps_Heap_T* heap, uint32_t item){
     bool success = heap->nbItems < heap->maxNbItems;
     if(success){
         size_t node = heap->nbItems;
-        while(node > 0){
+        while(node > 0UL){
             size_t parent = (node - 1UL)/2UL;
             if(item < heap->data[parent]){
                 break;
@@ -35,11 +35,8 @@ static inline bool extract(GenericHeaps_Heap_T* heap, uint32_t* item){
         uint32_t* data = heap->data;
         *item = data[node];
         uint32_t* nData = &data[heap->nbItems];
-        while(1){
+        while(((2UL * node) + 1UL) < heap->nbItems){
             size_t lChild = (2UL * node) + 1UL;
-            if(lChild >= heap->nbItems){
-                break;
-            }
             size_t highest = node; 
             uint32_t* hData = nData;
             if(data[lChild] > *nData){
