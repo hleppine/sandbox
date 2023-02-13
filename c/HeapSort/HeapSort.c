@@ -5,7 +5,7 @@
 // TODO: Move to some Commons unit,
 // so that MISRA suppression only needed once.
 static inline uint8_t* toBytePtr(void* ptr){
-    return (uint8_t*)ptr; // cppcheck-suppress misra-c2012-20.5
+    return (uint8_t*)ptr; // cppcheck-suppress misra-c2012-11.5
 }
 
 void HeapSort_sort(
