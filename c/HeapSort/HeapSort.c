@@ -11,6 +11,7 @@ void HeapSort_sort(
 ){
     size_t heapNbItems = 0;
     // uint8_t* dataPtr = data;
+    // TODO: Below circumvents MISRA 11.5
     uint8_t* dataPtr;
     uintptr_t* numPtr = &data;
     uintptr_t* dataPtrPtr = &dataPtr;
