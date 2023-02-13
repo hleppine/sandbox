@@ -36,7 +36,7 @@ static inline bool extract(GenericHeaps_Heap_T* heap, uint32_t* item){
         *item = data[node];
         uint32_t* nData = &data[heap->nbItems];
         while(1){
-            size_t lChild = 2UL * node + 1UL;
+            size_t lChild = (2UL * node) + 1UL;
             if(lChild >= heap->nbItems){
                 break;
             }
