@@ -2,13 +2,10 @@
 #include <string.h>
 #include "HeapSort.h"
 
+// TODO: Move to some Commons unit,
+// so that MISRA suppression only needed once.
 static inline uint8_t* toBytePtr(void* ptr){
-    // void* -> uint8_t* while compliant with MISRA 11.5
-    uint8_t* ret;
-    uintptr_t* src = &ptr;
-    uintptr_t* dst = &ret;
-    *dst = *src;
-    return ret;
+    return (uint8_t*)ptr; // cppcheck-suppress misra-c2012-20.5
 }
 
 void HeapSort_sort(
