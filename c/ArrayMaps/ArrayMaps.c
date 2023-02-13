@@ -1,7 +1,7 @@
 #include <string.h>
 #include "ArrayMaps.h"
 
-const size_t itemSize = sizeof(ArrayMaps_Item_T);
+static const size_t itemSize = sizeof(ArrayMaps_Item_T);
 
 static inline bool searchInsertion(
     const ArrayMaps_Item_T* items,
