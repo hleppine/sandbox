@@ -10,7 +10,8 @@ void HeapSort_sort(
     void* tmp
 ){
     size_t heapNbItems = 0;
-    uint8_t* dataPtr = (uint8_t*)data;
+    uintptr_t* numPtr = &data;
+    uint8_t* dataPtr = (uint8_t*)*numPtr;
     for(size_t i = 0; i < nbItems; i++){
         (void)memcpy(tmp, &dataPtr[i * itemSize], itemSize);
         size_t node = heapNbItems;
