@@ -73,7 +73,7 @@ bool ArrayMaps_insert(
         if(success){
             if(index < map->nbItems){
                 size_t nbItemsAfter = map->nbItems - index;
-                memmove(
+                (void)memmove(
                     &map->items[index + 1UL],
                     &map->items[index],
                     nbItemsAfter * itemSize);
@@ -96,9 +96,9 @@ bool ArrayMaps_delete(
         map->nbItems,  
         &index);
     if(success){
-        if(index < map->nbItems - 1UL){
+        if(index < (map->nbItems - 1UL)){
             size_t nbItemsAfter = map->nbItems - index - 1UL;
-            memmove(&map->items[index], &map->items[index + 1UL], nbItemsAfter * itemSize);
+            (void)memmove(&map->items[index], &map->items[index + 1UL], nbItemsAfter * itemSize);
         }
         map->nbItems--;
     }
