@@ -1,3 +1,3 @@
 all:
 	mkdir -p obj
-	gcc -Wall -Wextra ArrayMaps.h ArrayMaps.c Test.c -o obj/test
+	gcc -Wall -Wextra ArrayMaps.c Test.c -o obj/test
