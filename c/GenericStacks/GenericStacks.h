@@ -1,15 +1,13 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include "Commons.h"
 
 /*
  * Usage: define the macros (see examples below):
  *  - GENERIC_STACKS__ITEM_T
  *  - GENERIC_STACKS__TAG
  * and include this file.
- *
- * The MISRA C:2012 advisory rules 20.5 and 20.10 are violated
- * as annotated below with cppcheck suppressions.
  */
 
 #ifndef GENERIC_STACKS__ITEM_T
@@ -22,8 +20,7 @@
 
 // Define helper macros:
 
-#define GENERIC_STACKS__JOIN(A, B) A##B  // cppcheck-suppress misra-c2012-20.10
-#define GENERIC_STACKS__IDENT(ROOT, NAME) GENERIC_STACKS__JOIN(ROOT, NAME)
+#define GENERIC_STACKS__IDENT(ROOT, NAME) COMMONS__JOIN(ROOT, NAME)
 
 #define GENERIC_STACKS__ROOT GENERIC_STACKS__IDENT(Stacks, GENERIC_STACKS__TAG)
 
@@ -94,17 +91,3 @@ static inline bool GENERIC_STACKS__PEEK(const GENERIC_STACKS__STACK_T* stack,
     }
     return success;
 }
-
-// Undefine all macros defined in this file:
-
-#undef GENERIC_STACKS__ITEM_T      // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__TAG         // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__JOIN        // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__IDENT       // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__ROOT        // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__STACK_T     // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__INITIALIZE  // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__NB_ITEMS    // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__PUSH        // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__POP         // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_STACKS__PEEK        // cppcheck-suppress misra-c2012-20.5
