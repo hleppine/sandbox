@@ -1,12 +1,7 @@
 #include <stdint.h>
 #include <string.h>
+#include "Commons.h"
 #include "HeapSort.h"
-
-// TODO: Move to some Commons unit,
-// so that MISRA suppression only needed once.
-static inline uint8_t* toBytePtr(void* ptr){
-    return (uint8_t*)ptr; // cppcheck-suppress misra-c2012-11.5
-}
 
 void HeapSort_sort(
     void* data,
@@ -16,7 +11,7 @@ void HeapSort_sort(
     void* tmp
 ){
     size_t heapNbItems = 0;
-    uint8_t* dataPtr = toBytePtr(data);
+    uint8_t* dataPtr = Commons_toBytePtr(data);
     for(size_t i = 0; i < nbItems; i++){
         (void)memcpy(tmp, &dataPtr[i * itemSize], itemSize);
         size_t node = heapNbItems;
