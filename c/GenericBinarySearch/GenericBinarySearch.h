@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include "Commons.h"
 
 /*
  * Usage: define the macros (see examples below):
@@ -11,9 +12,6 @@
  *  - GENERIC_BINARY_SEARCH__GET_KEY
  *  - GENERIC_BINARY_SEARCH__LESS_THAN
  * and include this file.
- *
- * The MISRA C:2012 advisory rules 20.5 and 20.10 are violated
- * as annotated below with cppcheck suppressions.
  */
 
 #ifndef GENERIC_BINARY_SEARCH__ITEM_T
@@ -38,10 +36,8 @@
 
 // Define helper macros:
 
-#define GENERIC_BINARY_SEARCH__JOIN(A, B) \
-    A##B  // cppcheck-suppress misra-c2012-20.10
 #define GENERIC_BINARY_SEARCH__IDENT(ROOT, NAME) \
-    GENERIC_BINARY_SEARCH__JOIN(ROOT, NAME)
+    COMMONS__JOIN(ROOT, NAME)
 
 #define GENERIC_BINARY_SEARCH__ROOT \
     GENERIC_BINARY_SEARCH__IDENT(BinarySearch, GENERIC_BINARY_SEARCH__TAG)
@@ -84,15 +80,3 @@ static inline bool GENERIC_BINARY_SEARCH__SEARCH(
     *index = ret;
     return success;
 }
-
-// Undefine all macros defined in this file:
-
-#undef GENERIC_BINARY_SEARCH__ITEM_T     // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__KEY_T      // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__TAG        // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__GET_KEY    // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__LESS_THAN  // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__JOIN       // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__IDENT      // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__ROOT       // cppcheck-suppress misra-c2012-20.5
-#undef GENERIC_BINARY_SEARCH__SEARCH     // cppcheck-suppress misra-c2012-20.5
