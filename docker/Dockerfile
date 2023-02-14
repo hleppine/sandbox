@@ -24,7 +24,7 @@ RUN groupadd -g 1000 user && \
 
 # TODO proper version var
 RUN curl -sSL "https://github.com/facebook/infer/releases/download/v1.1.0/infer-linux64-v1.1.0.tar.xz" \
-| sudo tar -C /opt -xJ
+| tar -C /opt -xJ
 
 # ARG CPPCHECK_VERSION
 # RUN --mount=type=bind,source=deps/cppcheck-2.10.tar.gz,target=/tmp/cppcheck-2.10.tar.gz \
