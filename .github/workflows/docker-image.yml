@@ -65,3 +65,7 @@ jobs:
 
     - name: Run clang scan-build
       run: ./docker/run.sh scan-build make -C ./c
+
+    # TODO version shouldn't be hardcoded below. Add to PATH?
+    - name: Run Infer
+      run: ./docker/run.sh /opt/infer-linux64-v1.1.0/bin/infer make -C ./c
