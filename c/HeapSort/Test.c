@@ -4,9 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "Commons.h"
 #include "HeapSort.h"
-
-#define NB_ITEMS(X) (sizeof(X)/sizeof(X[0]))
 
 void checkSorted(uint32_t* data, size_t len){
     bool isSorted = true;
@@ -35,7 +34,7 @@ void test_small_data(void)
     };
     uint32_t tmp;
 
-    const size_t testDataLen = NB_ITEMS(testData);
+    const size_t testDataLen = ARRAY_SIZE(testData);
 
     printf("Test small data\n");
     for(size_t i = 0; i < testDataLen; i++){
@@ -61,7 +60,7 @@ void test_large_data(void)
     clock_t end;
     uint32_t tmp;
     
-    const size_t testDataLen = NB_ITEMS(testData);
+    const size_t testDataLen = ARRAY_SIZE(testData);
     
     for(size_t i = 0; i < testDataLen; i++){
         testData[i] = (uint32_t)rand();
