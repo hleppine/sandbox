@@ -1,3 +1,3 @@
 all:
 	mkdir -p obj
-	gcc -Wall -Wextra GenericStacks.h Test.c -o obj/test
+	gcc -I../Commons -Wall -Wextra GenericStacks.h Test.c -o obj/test
