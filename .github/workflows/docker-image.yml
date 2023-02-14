@@ -58,7 +58,7 @@ jobs:
       run: ./c/HeapSort/obj/test
 
     - name: Run cppcheck
-      run: ./docker/run.sh cppcheck ./c
+      run: ./docker/run.sh cppcheck -I./c/Commons ./c
 
     - name: Check MISRA
       run: ./docker/run.sh python3 ./c/misra.py
