@@ -1,3 +1,3 @@
 all:
 	mkdir -p obj
-	gcc -Wall -Wextra BoundedQueues.h Test.c -o obj/test
+	gcc -Wall -Wextra Test.c -o obj/test
